@@ -44,13 +44,33 @@ la branche courant est "exam-git" il faut utilisr la commande "git branch"
 
 - Copier ce fichier avec les réponses de la première partie à la racine du dépôt de code (aucune réponse attendue à cette étape).
 - Ajouter une première version de ce fichier dans le dépôt local.
+
+ git add TPnoté-MathisSALVADOR.md
+ git commit -m "Ajout d'une première version"
+
+
 - Vérifer que ce fichier a été correctement ajouté au dépôt (par la ligne de commandes git).
+
+git status
+
 - Synchroniser le dépôt distant pour y intégrer les changements du dépôt local.
+
+git push
 
 ## Branche `ansible` (2 pts)
 
 - Créer une branche `ansible` et y copier le contenu des 2 fichiers du tp Ansible dans un répertoire `ansible` (fichier `mes_hosts` et `mon_playbook`).
+
+git branch ansible
+git add mes_hosts mon_playbook.yml
+ git commit -m "ajout des fichiers"
+
+
+
+
 - Mettre à jour les 2 fichiers avec la description de votre environnement (utiliser des valeurs factices si vous n'avez pas d'environnement compatible pour une exécution d'un playbook Ansible) et intégrer les changements dans la branche.
+
+
 
 ## Préparation d'un hook de pre-push (3 pts)
 
@@ -58,8 +78,14 @@ Nous allons préparer un git hook à exécuter juste avant l'opération de push.
 
 Ce script servira à afficher à l'écran un résumé des 5 derniers commits réalisés (une ligne par commit). Pour rappel, un hook pré-push est un shell script **exécutable** nommé : `.git/hooks/pre-push`. Afin de faciliter le versionning de ce script, nous allons commencer par créer un fichier `pre-push` dans un répertoire `scripts` à la racine du projet.
 
-- Créer une branche `hook` pour versionner le script ;
+- Créer une branche `hook` pour versionner le script ; git branch hook
+
 - Créer le script `scripts/pre-push` dans la branche : on pourra notamment utiliser l'option `--oneline` de la commande qui nous intéresse ici.
+
+git add scripts/pre-push.sh
+
+git commit -m "Ajout du hook pre-push"
+
 
 On pourra donc utiliser un script de la forme :
 
@@ -67,7 +93,7 @@ On pourra donc utiliser un script de la forme :
 #!/bin/sh
 
 echo "Liste des derniers commits :"
-echo "$(git .........)"
+echo "$(git log --oneline -n 5)"
 ```
 
 ## Action GitHub (6 pts)
